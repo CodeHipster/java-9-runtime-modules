@@ -15,7 +15,12 @@ javac -d ./out/food.recipe ./food.recipe/src/module-info.java ./food.recipe/src/
 
 ### food.simple
 
-javac --module-path ./out -d ./out/food.simple ./food.simple/src/module-info.java ./food.simple/src/net/oostdam/food/simple/SimpleCookBook.java 
+javac --module-path ./out -d ./out/food.simple ./food.simple/src/module-info.java ./food.simple/src/net/oostdam/food/simple/SimpleCookBook.java
+
+### food.complex
+
+javac --module-path ./out -d ./out/food.complex ./food.complex/src/module-info.java ./food.complex/src/net/oostdam/food/complex/ComplexCookBook.java
+
 
 ## run
 
