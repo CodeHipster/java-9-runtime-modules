@@ -30,3 +30,7 @@ java --module-path out -m food.console.app/net.oostdam.food.console.app.Main
 
 The -m option specifies the main module, the value after the slash is the class name of the main class in the module.
 
+
+
+jar -f food.complex.jar --create -C out/production/food.complex .
+jar -f food.app.jar --create -C out/production/food.console-app .
