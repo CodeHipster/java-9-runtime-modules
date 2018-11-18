@@ -27,7 +27,6 @@ public class Main {
         Path dir1 = Paths.get("/Users/thijs/projects/meetup/food-app/food.complex.jar");
         ModuleFinder finder = ModuleFinder.of(dir1);
 
-
         ModuleLayer parent = ModuleLayer.boot();
 
         Configuration cf = parent.configuration().resolveAndBind(finder, ModuleFinder.of(), Set.of("food.complex"));
@@ -45,15 +44,6 @@ public class Main {
 
             recipes.stream().forEach(recipe -> System.out.println(recipe.getName()));
         }
-//
-//        ServiceLoader.load(CookBook.class).stream().forEach(cookBookProvider -> {
-//
-//            CookBook cookBook = cookBookProvider.get();
-//            Collection<Recipe> recipes = cookBook.getRecipes();
-//
-//            recipes.stream().forEach(recipe -> System.out.println(recipe.getName()));
-//
-//        });
 
     }
 }
