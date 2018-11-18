@@ -11,6 +11,7 @@ todo: branch with example code
 
 todo: howto commandline
 todo: howto intellij
+    - how to setup app
 
 2. create service module and implement service module
 todo: branch for example code
