@@ -7,7 +7,7 @@ todo: explain basics of java9 modules
 
 todo: links for more information
 
-todo: branch with example code
+branch: https://github.com/CodeHipster/java-9-runtime-modules/tree/exercise1
 
 todo: howto commandline
 todo: howto intellij

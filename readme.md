@@ -4,18 +4,8 @@
 
 modules:
  - module for listing recipes
-    - has a compile time dependency on the recipe interface
-    - has runtime dependencies on modules containing recipies
- - module for containing recipes
-    - has a compile time dependency on recipe interface
- - module defining recipe interface
-
 
 ## intellij 
-
-###
-
-Module dependencies will have to be manually configured in Open Module Settings -> Dependencies
 
 ### import bug
 
@@ -23,7 +13,6 @@ To run this project in intellij you will have to create a project and the module
 and copy paste the code.
 
 importing modules/projects from existing sources seems to break the Run/Debug configuration for Java9
-
 
 ## command line
 
@@ -35,36 +24,43 @@ importing modules/projects from existing sources seems to break the Run/Debug co
 ###################
 # food.app module #
 ###################
-javac --module-path out -d ./out/food.console.app ./food.console-app/src/module-info.java ./food.console-app/src/net/oostdam/food/console/app/Main.java
+javac -d ./out/food.console.app ./food.console-app/src/module-info.java ./food.console-app/src/net/oostdam/food/console/app/Main.java ./food.console-app/src/net/oostdam/food/console/app/Recipe.java  ./food.console-app/src/net/oostdam/food/console/app/CookBook.java ./food.console-app/src/net/oostdam/food/console/app/BookOfPancakes.java 
 
 -d specifies the output directory, it must already exist.
---module-path specifies the modules directory, so it can resolve modules the application depends on.
-
-###############
-# food.recipe #
-###############
-javac -d ./out/food.recipe ./food.recipe/src/module-info.java ./food.recipe/src/net/oostdam/food/recipe/CookBook.java ./food.recipe/src/net/oostdam/food/recipe/Recipe.java
-
-###############
-# food.simple #
-###############
-javac --module-path ./out -d ./out/food.simple ./food.simple/src/module-info.java ./food.simple/src/net/oostdam/food/simple/SimpleCookBook.java
-
-################
-# food.complex #
-################
-javac --module-path ./out -d ./out/food.complex ./food.complex/src/module-info.java ./food.complex/src/net/oostdam/food/complex/ComplexCookBook.java
 
 #########
 ## run ##
 #########
 
-###################
-# food.app module #
-###################
-
 java --module-path out -m food.console.app/net.oostdam.food.console.app.Main
 
+--module-path specifies the modules directory, so it can resolve modules the application depends on.
 The -m option specifies the main module, the value after the slash is the class name of the main class in the module.
 
+#########
+## jar ##
+#########
+
+
+jar -f food.app.jar --create -C out/food.console.app .
+
+java --module-path food.app.jar --module food.console.app/net.oostdam.food.console.app.Main
+
+
 ```
+
+
+1. creating module
+
+todo: explain basics of java9 modules
+- extra level of encapsulation
+- module-info.java
+- compilation
+
+todo: links for more information
+
+branch: https://github.com/CodeHipster/java-9-runtime-modules/tree/exercise1
+
+todo: howto commandline
+todo: howto intellij
+    - how to setup app
