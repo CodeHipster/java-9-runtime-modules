@@ -68,3 +68,12 @@ java --module-path out -m food.console.app/net.oostdam.food.console.app.Main
 The -m option specifies the main module, the value after the slash is the class name of the main class in the module.
 
 ```
+
+
+TODO: 
+console-app:
+compile time dependency on recipe
+runtime dependency on simple recipies
+
+food.simple
+compile time dependency on recipe
