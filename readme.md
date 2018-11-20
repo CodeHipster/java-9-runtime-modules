@@ -40,17 +40,17 @@ java
 ```
 jar --file food.app.jar --create --main-class net.oostdam.food.console.app.Main -C out/food.console.app .
 
-java --module-path food.app.jar --module food.console.app
+java -jar food.app.jar
 ```
 
 jar 
 - -f/--file to specify the output file
 - -c/--create to create a new archive
+- --main-class, specify the entry point for executable jar
 - -C specify directory and files to include in archive
 
 java 
-- --module-path, specify where to look for the module (can also be an archive)
-- -m/--module, specify module to run (and optionally main class, if you did not specify main-class when creating the jar)
+- jar, specify a jar you want to run, only works when the main-class is specified when creating the jar
     
 
 ### extra sources
