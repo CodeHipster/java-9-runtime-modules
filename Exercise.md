@@ -26,4 +26,6 @@ todo: explain how to get info about modules from code
 
 
 
+4: bonus, make independent of a JRE
+https://steveperkins.com/using-java-9-modularization-to-ship-zero-dependency-native-apps/
 
