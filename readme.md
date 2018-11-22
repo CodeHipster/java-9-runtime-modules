@@ -37,7 +37,7 @@ javac -d ./out/food.recipe ./food.recipe/src/module-info.java ./food.recipe/src/
 
 food.app module
 ``` 
-javac --module-path out -d ./out/food.console.app ./food.console-app/src/module-info.java ./food.console-app/src/net/oostdam/food/console/app/Main.java 
+javac --module-path ./out -d ./out/food.console.app ./food.console-app/src/module-info.java ./food.console-app/src/net/oostdam/food/console/app/Main.java 
 ```
 
 food.simple
