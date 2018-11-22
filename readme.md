@@ -6,7 +6,8 @@ branch: https://github.com/CodeHipster/java-9-runtime-modules/tree/exercise1
 ## structure
 
 modules:
- - module for listing recipes
+ - food.console.app
+    - module for listing recipes
 
 ## intellij 
 
