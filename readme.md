@@ -55,9 +55,9 @@ java
     
 
 ### extra sources
-https://www.oracle.com/corporate/features/understanding-java-9-modules.html
-https://docs.oracle.com/javase/9/tools/jar.htm
-https://docs.oracle.com/javase/9/tools/java.htm
+- https://www.oracle.com/corporate/features/understanding-java-9-modules.html
+- https://docs.oracle.com/javase/9/tools/jar.htm
+- https://docs.oracle.com/javase/9/tools/java.htm
 
 
 
