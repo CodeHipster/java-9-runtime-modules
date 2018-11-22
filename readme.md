@@ -3,12 +3,14 @@
 ## structure
 
 modules:
- - module for listing recipes
+ - module for listing recipes(food.console.app)
     - has a compile time dependency on the recipe interface
     - has runtime dependencies on modules containing recipies
- - module for containing recipes
+ - module defining recipe interface(food.recipe)
+ - module for containing simple recipes(food.simple)
     - has a compile time dependency on recipe interface
- - module defining recipe interface
+ - module for containing complex recipes(food.complex)
+    - has a compile time dependency on recipe interface
 
 
 ## intellij 
