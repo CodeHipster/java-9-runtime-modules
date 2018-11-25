@@ -3,13 +3,17 @@
 ## structure
 
 modules:
- - module for listing recipes(food.console.app)
+ - food.console.app
+    - module for listing recipes
     - has a compile time dependency on the recipe interface
     - has runtime dependencies on modules containing recipies
- - module defining recipe interface(food.recipe)
- - module for containing simple recipes(food.simple)
+ - food.recipe
+    - module defining recipe interface
+ - food.simple   
+    - module for containing simple recipes
     - has a compile time dependency on recipe interface
- - module for containing complex recipes(food.complex)
+ - food.complex
+    - module for containing complex recipes
     - has a compile time dependency on recipe interface
 
 
