@@ -89,7 +89,8 @@ jar
 - --list to show to contents of the jar
 
 java 
-- jar, specify a jar you want to run, only works when the main-class is specified when creating the jar
+- --module-path specifies the modules directory, so it can resolve modules the application depends on.
+- -m/--module option specifies the module to run.
     
 
 ### extra sources
