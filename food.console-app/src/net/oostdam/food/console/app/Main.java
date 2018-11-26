@@ -13,16 +13,10 @@ import java.util.ServiceLoader;
 import java.util.Set;
 
 public class Main {
-    public static void main(String[] args) throws ClassNotFoundException {
+    public static void main(String[] args) {
 
         ServiceLoader<CookBook> loader = ServiceLoader.load(CookBook.class);
-        Iterator<CookBook> iterator = loader.iterator();
-        while(iterator.hasNext()){
-            CookBook cookBook = iterator.next();
-            Collection<Recipe> recipes = cookBook.getRecipes();
-
-            recipes.stream().forEach(recipe -> System.out.println(recipe.getName()));
-        }
+        printBooks(loader);
 
         Path dir1 = Paths.get("/Users/thijs/projects/meetup/food-app/food.complex.jar");
         ModuleFinder finder = ModuleFinder.of(dir1);
@@ -35,15 +29,21 @@ public class Main {
 
         ModuleLayer layer = parent.defineModulesWithOneLoader(cf, scl);
 
-        //Class<?> c = layer.findLoader("food.complex").loadClass("CookBook");
-        loader = ServiceLoader.load(layer, CookBook.class);
-        iterator = loader.iterator();
+        ServiceLoader<CookBook> loaderWithModule = ServiceLoader.load(layer, CookBook.class);
+
+        printBooks(loaderWithModule);
+
+    }
+
+    private static void printBooks(ServiceLoader<CookBook> loader){
+        Iterator<CookBook> iterator = loader.iterator();
+        System.out.println("Printing Cookbooks");
         while(iterator.hasNext()){
             CookBook cookBook = iterator.next();
+            System.out.println("Cookbook: " + cookBook.toString());
             Collection<Recipe> recipes = cookBook.getRecipes();
 
-            recipes.stream().forEach(recipe -> System.out.println(recipe.getName()));
+            recipes.stream().forEach(recipe -> System.out.println(" - " + recipe.getName()));
         }
-
     }
 }
