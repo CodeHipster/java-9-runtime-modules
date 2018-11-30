@@ -33,6 +33,8 @@ public class Main {
 
         printBooks(loaderWithModule);
 
+        printLayerStructure(CookBook.class);
+
     }
 
     private static void printBooks(ServiceLoader<CookBook> loader){
@@ -41,9 +43,24 @@ public class Main {
         while(iterator.hasNext()){
             CookBook cookBook = iterator.next();
             System.out.println("Cookbook: " + cookBook.toString());
+            System.out.println("In module: " + cookBook.getClass().getModule());
+            System.out.println("In layer: " + cookBook.getClass().getModule().getLayer());
+            System.out.println("Module has packages: " + cookBook.getClass().getModule().getPackages());
             Collection<Recipe> recipes = cookBook.getRecipes();
 
             recipes.stream().forEach(recipe -> System.out.println(" - " + recipe.getName()));
         }
+    }
+
+    private static void printLayerStructure(Class clazz){
+        clazz.getModule().getLayer().parents().stream().forEach(moduleLayer ->
+        {
+            System.out.println("ModuleLayer1: "+ moduleLayer);
+            moduleLayer.parents().stream().forEach(moduleLayer2 ->
+            {
+                System.out.println("ModuleLayer2: "+ moduleLayer2);
+                moduleLayer2.parents().stream().forEach(moduleLayer3 -> System.out.println("ModuleLayer3: "+ moduleLayer));
+            });
+        });
     }
 }
