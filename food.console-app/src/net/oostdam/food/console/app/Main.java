@@ -3,6 +3,9 @@ package net.oostdam.food.console.app;
 import net.oostdam.food.recipe.CookBook;
 import net.oostdam.food.recipe.Recipe;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.module.Configuration;
 import java.lang.module.ModuleFinder;
 import java.nio.file.Path;
@@ -18,7 +21,9 @@ public class Main {
         ServiceLoader<CookBook> loader = ServiceLoader.load(CookBook.class);
         printBooks(loader);
 
-        Path dir1 = Paths.get("/Users/thijs/projects/meetup/food-app/food.complex.jar");
+        String path = getPathInput();
+
+        Path dir1 = Paths.get(path);
         ModuleFinder finder = ModuleFinder.of(dir1);
 
         ModuleLayer parent = ModuleLayer.boot();
@@ -48,8 +53,21 @@ public class Main {
             System.out.println("Module has packages: " + cookBook.getClass().getModule().getPackages());
             Collection<Recipe> recipes = cookBook.getRecipes();
 
-            recipes.stream().forEach(recipe -> System.out.println(" - " + recipe.getName()));
+            recipes.forEach(recipe -> System.out.println(" - " + recipe.getName()));
         }
+    }
+
+    private static String getPathInput(){
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Enter path to .jar: ");
+        String path = null;
+        try {
+            path = reader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("You entered : " + path);
+        return path;
     }
 
     private static void printLayerStructure(Class clazz){
